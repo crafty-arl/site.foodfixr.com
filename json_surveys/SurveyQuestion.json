@@ -1,0 +1,282 @@
+[
+    {
+        "question_id": "1",
+        "category_id": "1",
+        "question_text": "You enjoy fast foods 5 days a week or more",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "2",
+        "category_id": "1",
+        "question_text": "You keep easy to make boxed and canned foods stocked well in your pantry",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "3",
+        "category_id": "1",
+        "question_text": "You choose farm raised eggs, beef, pork and chicken for your plate.",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "4",
+        "category_id": "1",
+        "question_text": "Favorite snacks are popcorn, corn chips, Fritos, Cheetos, ritz-type crackers",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "5",
+        "category_id": "1",
+        "question_text": "Frozen foods that are easy to make are your friend",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "6",
+        "category_id": "1",
+        "question_text": "Getting my food that supports local farmers and co-ops is important",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "7",
+        "category_id": "1",
+        "question_text": "I only buy organic foods with very few ingredients that I can pronounce",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "8",
+        "category_id": "1",
+        "question_text": "Corn is a staple and central to my diet",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "9",
+        "category_id": "2",
+        "question_text": "Deserts after meals and candies or cookies for snacks are your favorite",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "10",
+        "category_id": "2",
+        "question_text": "Favorite drinks are Starbucks sweet coffees, orange juice smoothies and soft drinks",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "11",
+        "category_id": "2",
+        "question_text": "You try to eat foods with 5gm of sugar or less",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "12",
+        "category_id": "2",
+        "question_text": "Favorite snacks are cookies, candy, cakes, pies, chocolate, ice cream",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "13",
+        "category_id": "2",
+        "question_text": "Sugar is not my friend. I avoid it as much as possible",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "14",
+        "category_id": "2",
+        "question_text": "Low glycemic index fruit and sweeteners is your jam",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "15",
+        "category_id": "3",
+        "question_text": "Fresh vegetables and live produce fill up your plate",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "16",
+        "category_id": "3",
+        "question_text": "Breads, grains, pasta, rice fill up your plate",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "17",
+        "category_id": "3",
+        "question_text": "Fresh juiced juices and morning fruit/veg smoothies start your day",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "18",
+        "category_id": "3",
+        "question_text": "I'm a carnivore and mostly eat meat",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "19",
+        "category_id": "3",
+        "question_text": "Meat, grains and desserts are my favorite for lunch and dinners",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "20",
+        "category_id": "4",
+        "question_text": "Meat and potatoes are your favorite meal",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "21",
+        "category_id": "4",
+        "question_text": "Burgers and Sandwiches made with bread, veggies and meats are your jam",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "22",
+        "category_id": "4",
+        "question_text": "Rice and beans are a usual choice on your plate",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "23",
+        "category_id": "4",
+        "question_text": "You choose a lot of salads and greens with meats or other proteins",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "24",
+        "category_id": "4",
+        "question_text": "Meat is best eaten by itself as a dish",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "25",
+        "category_id": "4",
+        "question_text": "I'm Meat free and prefer only veggies",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "26",
+        "category_id": "4",
+        "question_text": "Veggies are my favorite when made with grains like rice, quinoa or pasta",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "27",
+        "category_id": "5",
+        "question_text": "You eat meals and snacks all day long up until bedtime",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "28",
+        "category_id": "5",
+        "question_text": "You forget to eat and grab whatever you can when you're starving",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "29",
+        "category_id": "5",
+        "question_text": "You try eating at specific times of the day, and never close to bedtime",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "30",
+        "category_id": "5",
+        "question_text": "Late at night you're most hungry and have snacks in the wee hours",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "31",
+        "category_id": "5",
+        "question_text": "1 or 2 meals a day are planned and eaten at the same time",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "32",
+        "category_id": "5",
+        "question_text": "Meals and snacks are planned and always eaten close to the same time every day",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "33",
+        "category_id": "6",
+        "question_text": "You heard you should take a probiotic pill so you do",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "34",
+        "category_id": "6",
+        "question_text": "I am a scholar at good gut bacteria - eat them daily!",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    },
+    {
+        "question_id": "35",
+        "category_id": "6",
+        "question_text": "What's a probiotic? No idea how to eat them",
+        "question_type": "Multi Select",
+        "is_initial_question": false,
+        "is_final_question": false
+    }
+]
