@@ -7,36 +7,15 @@ from assessments import show_assessments
 from food_journal import show_food_journal
 from supabase import create_client, Client
 import os
-import streamlit.components.v1 as components
 
 API_URL: str = os.environ.get("SUPABASE_URL")
 API_KEY: str = os.environ.get("SUPABASE_KEY")
-supabase_client: Client = create_client(API_URL, API_KEY)
 
-# Function to save session data to query parameters
-def save_session_to_query_params():
-    # Use JavaScript to set query parameters
-    components.html(
-        f"""
-        <script>
-            const params = new URLSearchParams(window.location.search);
-            params.set('user_id', '{st.session_state.get('user_id', '')}');
-            params.set('username', '{st.session_state.get('username', '')}');
-            window.history.replaceState(null, '', '?' + params.toString());
-        </script>
-        """,
-        height=0,
-    )
+@st.cache_resource
+def get_supabase_client(api_url, api_key):
+    return create_client(api_url, api_key)
 
-# Function to load session data from query parameters
-def load_session_from_query_params():
-    query_params = st.query_params  # Accessing as an attribute
-    if 'user_id' in query_params and 'username' in query_params:
-        st.session_state['user_id'] = query_params['user_id'][0]
-        st.session_state['username'] = query_params['username'][0]
-
-# Load session data from query parameters on page load
-load_session_from_query_params()
+supabase_client: Client = get_supabase_client(API_URL, API_KEY)
 
 # Function to check if user_id exists in the UserProfile table
 def user_exists(user_id):
@@ -46,6 +25,7 @@ def user_exists(user_id):
 st.sidebar.header("User Login Screen")
 
 if 'user_id' in st.session_state:
+    print(f"Debug: user_id in session state: {st.session_state['user_id']}")
     if user_exists(st.session_state['user_id']):
         st.sidebar.write(f"Welcome back, {st.session_state['username']}!")
         sign_out_button = st.sidebar.button("Sign Out", key="sign_out_button")
@@ -53,20 +33,13 @@ if 'user_id' in st.session_state:
             response = supabase_client.auth.sign_out()
             if response:
                 st.session_state.clear()
-                # Use JavaScript to clear query parameters
-                components.html(
-                    """
-                    <script>
-                        window.location.href = window.location.origin + window.location.pathname;
-                    </script>
-                    """,
-                    height=0,
-                )
+                print("Debug: Session state cleared on sign out.")
             else:
                 st.sidebar.error("Refresh the page...")
     else:
         st.sidebar.error("User ID not found. Please create an account.")
         st.session_state.clear()
+        print("Debug: Session state cleared because user ID not found.")
 else:
     st.sidebar.write("Please enter your details to login or create an account.")
     selected_tab = st.sidebar.radio("Select an option", options=['Login', 'Create Account'], index=0, key="auth_tabs")
@@ -90,7 +63,6 @@ else:
                             user_metadata = response.user.user_metadata
                             st.session_state['user_id'] = user_id
                             st.session_state['username'] = user_metadata['first_name']
-                            save_session_to_query_params()
                             st.sidebar.empty()
                             st.write(f"Welcome back, {st.session_state['username']}!")
                             st.balloons()
@@ -146,11 +118,14 @@ else:
                             }).execute()
                             print(f"Debug: Insert response: {insert_response}")
 
-                            st.session_state['user_id'] = user_id
-                            st.session_state['username'] = username
-                            save_session_to_query_params()  # Save session to query params
-                            st.sidebar.empty()  # Remove the sidebar
-                            st.write(f"Welcome, {username}!")
+                            if insert_response:
+                                st.session_state['user_id'] = user_id
+                                st.session_state['username'] = username
+                                st.sidebar.empty()  # Remove the sidebar
+                                st.write(f"Welcome, {username}!")
+                                st.write(st.session_state['user_id'])
+                            else:
+                                st.sidebar.error("Failed to create account.")
                         else:
                             st.sidebar.error("Failed to create account.")
                     except Exception as e:
