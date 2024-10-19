@@ -17,29 +17,30 @@ def get_supabase_client(api_url, api_key):
 
 supabase_client: Client = get_supabase_client(API_URL, API_KEY)
 
-# Function to check if user_id exists in the UserProfile table
-def user_exists(user_id):
-    response = supabase_client.table("UserProfile").select("*").eq("user_id", user_id).execute()
-    return len(response.data) > 0
+# Function to get query parameters
+def get_query_params():
+    query_params = st.experimental_get_query_params()
+    return query_params
+
+# Function to set query parameters
+def set_query_params(params):
+    st.experimental_set_query_params(**params)
 
 st.sidebar.header("User Login Screen")
 
-if 'user_id' in st.session_state:
-    print(f"Debug: user_id in session state: {st.session_state['user_id']}")
-    if user_exists(st.session_state['user_id']):
-        st.sidebar.write(f"Welcome back, {st.session_state['username']}!")
-        sign_out_button = st.sidebar.button("Sign Out", key="sign_out_button")
-        if sign_out_button:
-            response = supabase_client.auth.sign_out()
-            if response:
-                st.session_state.clear()
-                print("Debug: Session state cleared on sign out.")
-            else:
-                st.sidebar.error("Refresh the page...")
-    else:
-        st.sidebar.error("User ID not found. Please create an account.")
-        st.session_state.clear()
-        print("Debug: Session state cleared because user ID not found.")
+query_params = get_query_params()
+signed_in = query_params.get("signed_in", ["false"])[0]
+
+if signed_in == "true" and 'username' in st.session_state:
+    st.sidebar.write(f"Welcome back, {st.session_state['username']}!")
+    sign_out_button = st.sidebar.button("Sign Out", key="sign_out_button")
+    if sign_out_button:
+        set_query_params({"signed_in": "false"})
+        if 'user_id' in st.session_state:
+            del st.session_state['user_id']
+        if 'username' in st.session_state:
+            del st.session_state['username']
+        print("Debug: User ID and username removed from session state on sign out.")
 else:
     st.sidebar.write("Please enter your details to login or create an account.")
     selected_tab = st.sidebar.radio("Select an option", options=['Login', 'Create Account'], index=0, key="auth_tabs")
@@ -59,15 +60,13 @@ else:
                     )
                     if response:
                         user_id = response.user.id
-                        if user_exists(user_id):
-                            user_metadata = response.user.user_metadata
-                            st.session_state['user_id'] = user_id
-                            st.session_state['username'] = user_metadata['first_name']
-                            st.sidebar.empty()
-                            st.write(f"Welcome back, {st.session_state['username']}!")
-                            st.balloons()
-                        else:
-                            st.sidebar.error("User ID not found. Please create an account.")
+                        user_metadata = response.user.user_metadata
+                        st.session_state['user_id'] = user_id
+                        st.session_state['username'] = user_metadata['first_name']
+                        set_query_params({"signed_in": "true"})
+                        st.sidebar.empty()
+                        st.write(f"Welcome back, {st.session_state['username']}!")
+                        st.balloons()
                     else:
                         st.sidebar.error("Failed to login.")
                 except Exception as e:
@@ -121,6 +120,7 @@ else:
                             if insert_response:
                                 st.session_state['user_id'] = user_id
                                 st.session_state['username'] = username
+                                set_query_params({"signed_in": "true"})
                                 st.sidebar.empty()  # Remove the sidebar
                                 st.write(f"Welcome, {username}!")
                                 st.write(st.session_state['user_id'])
@@ -136,7 +136,7 @@ else:
                 st.sidebar.error("Please enter all the required details and a valid invite code to create an account.")
 
 # Add tabs for different sections only if the user is logged in
-if 'user_id' in st.session_state:
+if signed_in == "true" and 'username' in st.session_state:
     value = ui.tabs(options=['Dashboard', 'Health Conditions', 'Assesments', 'Food Journal'], default_value='Dashboard', key="kanaries")
 
     if value == 'Dashboard':
