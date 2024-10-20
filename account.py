@@ -16,6 +16,11 @@ medications_supplements = []
 pregnancy_or_breastfeeding = False
 food_preferences = []
 
+def show_health_conditions():
+    st.header("Health Conditions")
+    st.write("This is where health conditions will be displayed.")
+    # Add more functionality here as needed
+
 def show_account():
     global food_allergies, dietary_restrictions, chronic_conditions, autoimmune_conditions
     global gut_health_issues, weight_management_goals, blood_sugar_sensitivity, digestive_conditions

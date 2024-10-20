@@ -1,6 +1,13 @@
 from supabase import create_client, Client
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Get Supabase URL and key from environment variables
+url = os.getenv("SUPABASE_URL")
+key = os.getenv("SUPABASE_KEY")
+
 # Initialize Supabase client
-url = os.environ.get("SUPABASE_URL")
-key = os.environ.get("SUPABASE_KEY")
 supabase_client: Client = create_client(url, key)
